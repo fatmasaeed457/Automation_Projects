@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="11251" started-at="2021-01-11T12:22:21 EET" finished-at="2021-01-11T12:22:32 EET">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="11251" started-at="2021-01-11T12:22:21 EET" finished-at="2021-01-11T12:22:32 EET">
+      <class name="site.NagwaSite">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:site.NagwaSite@15aab8c6]" name="setUp" is-config="true" duration-ms="4305" started-at="2021-01-11T12:22:17 EET" finished-at="2021-01-11T12:22:21 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="openServer()[pri:0, instance:site.NagwaSite@15aab8c6]" name="openServer" is-config="true" duration-ms="5397" started-at="2021-01-11T12:22:21 EET" finished-at="2021-01-11T12:22:27 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openServer -->
+        <test-method status="PASS" signature="language()[pri:1, instance:site.NagwaSite@15aab8c6]" name="language" duration-ms="1649" started-at="2021-01-11T12:22:27 EET" finished-at="2021-01-11T12:22:28 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- language -->
+        <test-method status="PASS" signature="Search()[pri:2, instance:site.NagwaSite@15aab8c6]" name="Search" duration-ms="764" started-at="2021-01-11T12:22:28 EET" finished-at="2021-01-11T12:22:29 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search -->
+        <test-method status="PASS" signature="openSecondLesson()[pri:3, instance:site.NagwaSite@15aab8c6]" name="openSecondLesson" duration-ms="2722" started-at="2021-01-11T12:22:29 EET" finished-at="2021-01-11T12:22:32 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openSecondLesson -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:site.NagwaSite@15aab8c6]" name="tearDown" is-config="true" duration-ms="701" started-at="2021-01-11T12:22:32 EET" finished-at="2021-01-11T12:22:32 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- site.NagwaSite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

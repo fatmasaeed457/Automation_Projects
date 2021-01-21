@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="log-path">${sys:user.home}/Nagwa/LOG/</Property>
+        <Property name="archive">${log-path}/archive</Property>
+        <Property name="defaultPattern">%d{dd MMM yyyy HH:mm:ss} [%-5p] [ClassName]: %c{1} [MethodName]: %M [LineNumber]: %L [LogMSG]: %m%n</Property> 
+        <Property name="defaultRollOverMax">450</Property>
+        <Property name="fileHeader"></Property>
+        <Property name="fileFooter">\n========================================================================\n[%d] End of log</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%highlight{[%d] [%-5p] [%t] %C{3} (%F:%L) - %m%n}" charset="UTF-8"/>
+        </Console>
+
+        <RollingFile name="Log"
+                     fileName="${log-path}/Log.log"
+                     filePattern="${archive}/Log.log.%d{dd MMM yyyy HH_mm_ss}.gz"
+                     immediateFlush="true">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+
+            <PatternLayout pattern="${defaultPattern}"
+                           charset="UTF-8"
+                           header=""
+                           footer=""/>
+            <DefaultRolloverStrategy max="${defaultRollOverMax}" fileIndex="max"/>
+        </RollingFile>
+<!-- 
+        <RollingFile name="System"
+                     fileName="${log-path}/system.log"
+                     filePattern="${archive}/system.log.%d{yyyy-MM-dd}_%i.gz"
+                     immediateFlush="true">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <PatternLayout pattern="${defaultPattern}"
+                           charset="UTF-8"
+                           header="${fileHeader}"
+                           footer="${fileFooter}"/>
+            <DefaultRolloverStrategy max="${defaultRollOverMax}" fileIndex="max"/>
+        </RollingFile>
+ -->
+        <RollingFile name="Error"
+                     fileName="${log-path}/error.log"
+                     filePattern="${archive}/error.log.%d{dd MMM yyyy HH_mm_ss}.gz"
+                     immediateFlush="true">
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <PatternLayout pattern="${defaultPattern}"
+                           charset="UTF-8"
+                           header="${fileHeader}"
+                           footer="${fileFooter}"/>
+            <DefaultRolloverStrategy max="${defaultRollOverMax}" fileIndex="max"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.myOrganization.myApplication" additivity="false" level="INFO">
+            <appender-ref ref="System"/>
+            <appender-ref ref="Console"/>
+            <appender-ref ref="Error"/>
+        </Logger>
+
+        <Logger name="org.myOrganization.myApplication.peculiarPackage" additivity="false" level="TRACE">
+           <!--  <appender-ref ref="System"/> -->
+            <appender-ref ref="Console"/>
+            <appender-ref ref="Error"/>
+        </Logger>
+
+        <Logger name="org.springframework" additivity="false" level="WARN">
+           <!-- <appender-ref ref="System"/> --> 
+            <appender-ref ref="Console"/>
+            <appender-ref ref="Error"/>
+        </Logger>
+
+        <Logger name="javax" additivity="false" level="WARN">
+           <!-- <appender-ref ref="System"/> --> 
+            <appender-ref ref="Console"/>
+            <appender-ref ref="Error"/>
+        </Logger>
+
+        <!-- Root logger should be empty -->
+        <Root level="all">
+            <AppenderRef ref="Log"/>
+            <AppenderRef ref="Console"/>
+            <!--Make sure all errors are logged to the error log-->
+            <appender-ref ref="Error"/>
+        </Root>
+    </Loggers>
+</Configuration>
